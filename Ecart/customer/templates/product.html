@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block content%}
+<nav id="navigation">
+
+
+  <div class="container">
+    <div class="row">
+  
+
+      <div class="card" style="margin-top: 100px">
+        <img
+          src="{{product.image.url}}"
+          alt="Denim Jeans"
+          style="width: 400px"
+        />
+        <h1>{{product.product_name}}</h1>
+        <p class="price">${{product.price}}</p>
+        <h6>{{product.description}}</h6>
+        <a href="{%url 'addcart' product.id %}">
+          <button>Add to Cart</button>
+        </a>
+      </div>
+
+      <style>
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 800px;
+          margin: auto;
+          text-align: center;
+          font-family: arial;
+        }
+
+        .price {
+          color: grey;
+          font-size: 22px;
+        }
+
+        .card button {
+          border: none;
+          outline: 0;
+          padding: 12px;
+          color: white;
+          background-color: #d10024;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+        }
+
+        .card button:hover {
+          /* opacity: 0.20; */
+          background-color: black;
+        }
+        .card button:active {
+          background-color: #000;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+        }
+
+        img:hover {
+          transform: scale(0.8);
+        }
+      </style>
+    </div>
+  </div>
+
+  {%endblock content%}
+</nav>

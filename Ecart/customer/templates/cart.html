@@ -1,0 +1,73 @@
+{% extends 'base.html'%} {%block content%}
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    font-weight: bold;
+    font-size: 15px;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .check-btn{
+    background-color: #cb202d;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    
+  }
+  .remove-btn{
+    background-color:black;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <table style="margin-top: 20px;">
+      <tr>
+        <th>Product</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>quantity</th>
+        <th>status</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {% for cart in carts%}
+      {%csrf_token%}
+      <tr>
+        <td><img src="{{cart.product.image.url}}" alt="" width="200" /></td>
+        <td>{{cart.product.product_name}}</td>
+        <td>${{cart.product.price}}</td>
+        <td>{{cart.qty}}</td>
+        <td>{{cart.status}}</td>
+        <td>
+            <a href="">
+            <button  class="check-btn">Checkout</button>
+            </a>
+        </td>
+        <td>
+            <a href="{%url 'cart-remove' cart.id%}">
+            <button class="remove-btn">Remove</button>
+            </a>
+        </td>
+      </tr>
+      {%endfor%}
+    </table>
+  </div>
+</div>
+
+{%endblock content %}
